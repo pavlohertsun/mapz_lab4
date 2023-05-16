@@ -13,6 +13,7 @@ namespace mapz_lab4
         { 
             equipment = new Equipment();
             Console.WriteLine("xsxsxsxsxsx");
+            Console.WriteLine("xsxsxsxsxsx");
         }
     }
 }
