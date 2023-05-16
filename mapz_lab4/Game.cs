@@ -8,6 +8,12 @@ namespace mapz_lab4
 {
     public class Game
     {
+        private static Game INSTANCE;
+        private Game() { }
+        public static Game getInstance() {
+            if (INSTANCE == null) INSTANCE = new Game();
+            return INSTANCE;
+        }
         public void game(int sizeOfLocation)
         {
             //Random random = new Random();

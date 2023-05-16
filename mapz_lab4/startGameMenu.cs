@@ -22,7 +22,7 @@ namespace mapz_lab4
             Console.WriteLine(hero.ToString());
             Console.WriteLine("Location : ");
             Console.WriteLine(LocationCreator.LocationsList[choice - 1].ToString());
-            Game game = new Game();
+            Game game = Game.getInstance();
             game.game(LocationCreator.LocationsList[choice - 1].size);
         }
     }
