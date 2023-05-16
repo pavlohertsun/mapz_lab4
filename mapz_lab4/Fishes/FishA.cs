@@ -8,9 +8,6 @@ namespace mapz_lab4.Fishes
 {
     public class FishA : Fish
     {
-        public string name;
-        public int cost;
-
         public FishA()
         {
             name = "A";

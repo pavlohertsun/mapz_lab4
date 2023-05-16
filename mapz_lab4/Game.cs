@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mapz_lab4.Factory;
+using mapz_lab4.Fishes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -95,6 +97,21 @@ namespace mapz_lab4
 
             }
         }
+        public void randomFishIndexFunc(Lake lake, Random random, Fish fish)
+        {
+            fish.index1 = random.Next(0, lake.size);
+            fish.index2 = random.Next(0, lake.size);
+            if (lake.matrix[fish.index1, fish.index2] == 0) randomFishIndexFunc(lake, random, fish);
+            else
+            {
+                int number = 0;
+                if (fish.name == "J") number = 3;
+                else if (fish.name == "Q") number = 4;
+                else if (fish.name == "K") number = 5;
+                else if (fish.name == "A") number = 6;
+                lake.matrix[fish.index1, fish.index2] = number;
+            }
+        }
         async Task SpawnFish()
         {
             Random random = new Random();
@@ -107,24 +124,19 @@ namespace mapz_lab4
                 if (randomFishIndex == 0) factory = new FishAFactory();
                 else if (randomFishIndex == 1) factory = new FishJFactory();
                 else if (randomFishIndex == 2) factory = new FishKFactory();
-                else if (randomFishIndex == 3) factory = new FishQFactory();
+                else  factory = new FishQFactory();
 
                 Fish fish = factory.createFish();
-                randomFishIndex(map.lake, random, fish);
+                randomFishIndexFunc(map.lake, random, fish);
+                Task.Run(() => DeleteFish(fish, random, map.lake));
             }
         }
-        private void randomFishIndex(Lake lake, Random random, Fish fish) {
-            int index1 = random.Next(0, lake.size);
-            int index2 = random.Next(0, lake.size);
-            if (lake.matrix[index1, index2] == 0) randomFishIndex();
-            else {
-                int number = 0;
-                if (fish.name = "J") number = 3;
-                else if (fish.name = "Q") number = 4;
-                else if(fish.name = "K") number = 5;
-                else if(fish.name = "A") number = 6;
-                lake.matrix[index1, index2] = number;
-            }
+        async Task DeleteFish(Fish fish, Random random, Lake lake)
+        {
+            int time = random.Next(5,10);
+            Thread.Sleep(time * 1000);
+            lake.matrix[fish.index1, fish.index2] = 1;
+
         }
     }
 }
