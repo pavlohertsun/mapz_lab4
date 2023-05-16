@@ -23,11 +23,11 @@ namespace mapz_lab4
                 textLake += "                     ";
                 for (int j = 0; j < lake.size; ++j) {
                     if (lake.matrix[i, j] == ((int)LakeSymbols.LAND)) {
-                        textLake += "-";
+                        textLake += "- ";//
                     }
                     else if (lake.matrix[i, j] == ((int)LakeSymbols.WATER))
                     {
-                        textLake += "x";
+                        textLake += "x ";//
                     }
                 }
                 textLake += "\n";

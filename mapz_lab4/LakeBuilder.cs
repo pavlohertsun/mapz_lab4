@@ -9,7 +9,7 @@ namespace mapz_lab4
     class LakeBuilder
     {
         public static Lake lake1() {
-            int size = 15;
+            int size = 20;
             Lake lake = new Lake(size);
 
             for (int i = 0; i < size ;++i) {
@@ -18,12 +18,15 @@ namespace mapz_lab4
                     lake.matrix[i, j] = 1;
                 }
             }
-            lake.matrix[0,0] = 0;
-            lake.matrix[0,1] = 0;
-            lake.matrix[0,2] = 0;
-            lake.matrix[0,3] = 0;
-            lake.matrix[0,4] = 0;
-            lake.matrix[0,5] = 0;
+            int sizeOfLand1 = 2;
+            for (int i = 10; i < size; ++i)
+            {
+                for (int j = 0; j < sizeOfLand1; ++j)
+                {
+                    lake.matrix[i, j] = 0;
+                }
+                sizeOfLand1++;
+            }
             return lake;
         }
         public static Lake Lake2()
