@@ -8,8 +8,8 @@ namespace mapz_lab4
 {
     public class Lake
     {
-        int[,] matrix;
-        int size;
+        public int[,] matrix;
+        public int size;
         public Lake(int size)
         {
             this.size = size;
