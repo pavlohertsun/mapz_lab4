@@ -12,7 +12,6 @@ namespace mapz_lab4
         public Backpack() 
         { 
             equipment = new Equipment();
-            Console.WriteLine("xsxsxsxsxsx");
         }
     }
 }
