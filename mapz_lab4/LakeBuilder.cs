@@ -9,6 +9,7 @@ namespace mapz_lab4
     class LakeBuilder
     {
         public static Lake lake1() {
+            lake.matrix[0,0] = 2;
             int size = 20;
             Lake lake = new Lake(size);
 

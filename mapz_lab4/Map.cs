@@ -10,7 +10,8 @@ namespace mapz_lab4
     {
         enum LakeSymbols{
             LAND = 0,
-            WATER = 1
+            WATER = 1,
+            PLAYER = 2
         }
         private Lake lake;
         public Map(Lake lake) {
@@ -43,6 +44,10 @@ namespace mapz_lab4
                     {
                         textLake += "  ";
                     }
+                    else if (lake.matrix[i, j] == ((int)LakeSymbols.PLAYER))
+                    {
+                        textLake += "P ";
+                    }
                 }
 
                 //textLake += printSymbols(" ",spacesFrom);
@@ -52,5 +57,7 @@ namespace mapz_lab4
             textLake += printSymbols("-", lake.size * 2 + 2 + spacesFrom * 2);
             Console.WriteLine(textLake);
         }
+
+        
     }
 }
