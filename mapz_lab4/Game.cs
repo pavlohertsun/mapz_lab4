@@ -17,6 +17,7 @@ namespace mapz_lab4
         }
         public void game(int sizeOfLocation)
         {
+            Task.Run(ReadToConsoleAsync);
             Map map = new Map(LakeBuilder.lake1());
             while (true)
             {
@@ -25,5 +26,13 @@ namespace mapz_lab4
                 Thread.Sleep(500);
             }
         }
+        async Task ReadToConsoleAsync()
+        {
+            while (true) {
+                string input = Console.ReadLine();
+                if (input == "W") ; 
+            }
+        }
+    
     }
 }
