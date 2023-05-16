@@ -17,22 +17,39 @@ namespace mapz_lab4
             this.lake = lake;
         }
 
+        private string printSymbols(string symbols, int times) {
+            string symb = "";
+            for (int i = 0; i < times; ++i) symb += symbols;
+            return symb;
+        }
         public void showLake() {
             string textLake = "\n\n\n\n";
+            int spacesAmount = 20;
+            int spacesFrom = 0;
+
+            textLake += printSymbols(" ", spacesAmount);
+            textLake += printSymbols("-", lake.size * 2 + 2 + spacesFrom*2);
+            textLake += "\n";
+
             for (int i = 0; i < lake.size; ++i) {
-                textLake += "                     ";
+                for(int k = 0;k< spacesAmount;++k)textLake += " ";
+                textLake += "|";
+                //textLake += printSymbols(" ", spacesFrom);
                 for (int j = 0; j < lake.size; ++j) {
                     if (lake.matrix[i, j] == ((int)LakeSymbols.LAND)) {
-                        textLake += "-";
+                        textLake += "x ";
                     }
                     else if (lake.matrix[i, j] == ((int)LakeSymbols.WATER))
                     {
-                        textLake += "x";
+                        textLake += "  ";
                     }
                 }
-                textLake += "\n";
-            }
 
+                //textLake += printSymbols(" ",spacesFrom);
+                textLake += "|\n";
+            }
+            textLake += printSymbols(" ", spacesAmount);
+            textLake += printSymbols("-", lake.size * 2 + 2 + spacesFrom * 2);
             Console.WriteLine(textLake);
         }
     }
