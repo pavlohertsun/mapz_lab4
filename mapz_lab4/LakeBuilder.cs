@@ -11,7 +11,6 @@ namespace mapz_lab4
         public static Lake lake1() {
             int size = 20;
             Lake lake = new Lake(size);
-
             for (int i = 0; i < size ;++i) {
                 for (int j = 0; j < size ; ++j)
                 {
