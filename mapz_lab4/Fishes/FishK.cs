@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Fishes
 {
-    public class fishK
+    public class FishK : Fish
     {
         public string name;
         public int cost;
 
-        public fishK()
+        public FishK()
         {
             name = "K";
             cost = 7;
