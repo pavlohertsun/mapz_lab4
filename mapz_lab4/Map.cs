@@ -11,7 +11,11 @@ namespace mapz_lab4
         enum LakeSymbols{
             LAND = 0,
             WATER = 1,
-            PLAYER = 2
+            PLAYER = 2,
+            FISHJ = 3,
+            FISHQ = 4,
+            FISHK = 5,
+            FISHA = 6
         }
         public Lake lake;
         public Map(Lake lake) {
@@ -47,6 +51,22 @@ namespace mapz_lab4
                     else if (lake.matrix[i, j] == ((int)LakeSymbols.PLAYER))
                     {
                         textLake += "P ";
+                    }
+                    else if (lake.matrix[i, j] == ((int)LakeSymbols.FISHJ))
+                    {
+                        textLake += "J ";
+                    }
+                    else if (lake.matrix[i, j] == ((int)LakeSymbols.FISHQ))
+                    {
+                        textLake += "Q ";
+                    }
+                    else if (lake.matrix[i, j] == ((int)LakeSymbols.FISHK))
+                    {
+                        textLake += "K ";
+                    }
+                    else if (lake.matrix[i, j] == ((int)LakeSymbols.FISHA))
+                    {
+                        textLake += "A ";
                     }
                 }
 

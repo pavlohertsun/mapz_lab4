@@ -19,6 +19,7 @@ namespace mapz_lab4
         public void game(int sizeOfLocation)
         {
             Task.Run(ReadToConsoleAsync);
+            Task.Run(SpawnFish);
             while (true)
             {
                 Console.Clear();
@@ -94,6 +95,36 @@ namespace mapz_lab4
 
             }
         }
-    
+        async Task SpawnFish()
+        {
+            Random random = new Random();
+            AbstractFactory factory;
+            while (true) {
+                int time = random.Next(10,20);
+                Thread.Sleep(time * 1000);
+                int randomFishIndex = random.Next(0,3);
+
+                if (randomFishIndex == 0) factory = new FishAFactory();
+                else if (randomFishIndex == 1) factory = new FishJFactory();
+                else if (randomFishIndex == 2) factory = new FishKFactory();
+                else if (randomFishIndex == 3) factory = new FishQFactory();
+
+                Fish fish = factory.createFish();
+                randomFishIndex(map.lake, random, fish);
+            }
+        }
+        private void randomFishIndex(Lake lake, Random random, Fish fish) {
+            int index1 = random.Next(0, lake.size);
+            int index2 = random.Next(0, lake.size);
+            if (lake.matrix[index1, index2] == 0) randomFishIndex();
+            else {
+                int number = 0;
+                if (fish.name = "J") number = 3;
+                else if (fish.name = "Q") number = 4;
+                else if(fish.name = "K") number = 5;
+                else if(fish.name = "A") number = 6;
+                lake.matrix[index1, index2] = number;
+            }
+        }
     }
 }
