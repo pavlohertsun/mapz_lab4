@@ -13,7 +13,7 @@ namespace mapz_lab4
             WATER = 1,
             PLAYER = 2
         }
-        private Lake lake;
+        public Lake lake;
         public Map(Lake lake) {
             this.lake = lake;
         }
