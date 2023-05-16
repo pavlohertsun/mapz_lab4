@@ -18,7 +18,12 @@ namespace mapz_lab4
                     lake.matrix[i, j] = 1;
                 }
             }
-            
+            lake.matrix[0,0] = 0;
+            lake.matrix[0,1] = 0;
+            lake.matrix[0,2] = 0;
+            lake.matrix[0,3] = 0;
+            lake.matrix[0,4] = 0;
+            lake.matrix[0,5] = 0;
             return lake;
         }
         public static Lake Lake2()
