@@ -33,14 +33,14 @@ namespace mapz_lab4
             int spacesFrom = 0;
 
             textLake += printSymbols(" ", spacesAmount);
-            textLake += printSymbols("-", lake.size * 2 + 2 + spacesFrom*2);
+            textLake += printSymbols("-", lake.location.size * 2 + 2 + spacesFrom*2);
             textLake += "\n";
 
-            for (int i = 0; i < lake.size; ++i) {
+            for (int i = 0; i < lake.location.size; ++i) {
                 for(int k = 0;k< spacesAmount;++k)textLake += " ";
                 textLake += "|";
                 //textLake += printSymbols(" ", spacesFrom);
-                for (int j = 0; j < lake.size; ++j) {
+                for (int j = 0; j < lake.location.size; ++j) {
                     if (lake.matrix[i, j] == ((int)LakeSymbols.LAND)) {
                         textLake += "x ";
                     }
@@ -74,7 +74,7 @@ namespace mapz_lab4
                 textLake += "|\n";
             }
             textLake += printSymbols(" ", spacesAmount);
-            textLake += printSymbols("-", lake.size * 2 + 2 + spacesFrom * 2);
+            textLake += printSymbols("-", lake.location.size * 2 + 2 + spacesFrom * 2);
             Console.WriteLine(textLake);
         }
 

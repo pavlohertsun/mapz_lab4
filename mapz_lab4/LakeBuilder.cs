@@ -9,17 +9,19 @@ namespace mapz_lab4
     class LakeBuilder
     {
         public static Lake lake1() {
-            int size = 20;
-            Lake lake = new Lake(size);
+            List<string> list = new List<string>();
+            list.Add("J");
+            list.Add("Q");
+            Lake lake = new Lake(new Location("Svityaz", 20, list ));
             
-            for (int i = 0; i < size ;++i) {
-                for (int j = 0; j < size ; ++j)
+            for (int i = 0; i < lake.location.size ;++i) {
+                for (int j = 0; j < lake.location.size; ++j)
                 {
                     lake.matrix[i, j] = 1;
                 }
             }
             int sizeOfLand1 = 2;
-            for (int i = 10; i < size; ++i)
+            for (int i = 10; i < lake.location.size; ++i)
             {
                 for (int j = 0; j < sizeOfLand1; ++j)
                 {

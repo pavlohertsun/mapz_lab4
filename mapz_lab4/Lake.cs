@@ -9,11 +9,11 @@ namespace mapz_lab4
     public class Lake
     {
         public int[,] matrix;
-        public int size;
-        public Lake(int size)
+        public Location location;
+        public Lake(Location location)
         {
-            this.size = size;
-            matrix = new int[size, size];
+            this.location = location;
+            matrix = new int[this.location.size, this.location.size];
         }
     }
 }

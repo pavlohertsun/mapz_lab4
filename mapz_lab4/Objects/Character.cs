@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace mapz_lab4
 {
-    internal class Character
+    public class Character
     {
         public double attentiveness { get; set; }
         public double stamina { get; set; }
         public double skills { get; set; }
         public int expirience { get; set; }
         public int moneyAmount { get; set; }
-        Backpack backpack { get; set; }
+        public Backpack backpack { get; set; }
         public Character()
         {
             stamina = 100;

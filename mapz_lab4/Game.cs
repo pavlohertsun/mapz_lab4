@@ -35,9 +35,9 @@ namespace mapz_lab4
                 string input = Console.ReadLine();
                 int index1 = 0;
                 int index2 = 0;
-                for (int i = 0; i < map.lake.size; ++i)
+                for (int i = 0; i < map.lake.location.size; ++i)
                 {
-                    for (int j = 0; j < map.lake.size; ++j) 
+                    for (int j = 0; j < map.lake.location.size; ++j) 
                     {
                         if (map.lake.matrix[i,j] == 2)
                         {
@@ -72,7 +72,7 @@ namespace mapz_lab4
                      
                 else if (input == "s")
                 {
-                    if (index1 != map.lake.size - 1)
+                    if (index1 != map.lake.location.size - 1)
                     {
                         if (map.lake.matrix[index1 + 1, index2] != 0)
                         {
@@ -84,7 +84,7 @@ namespace mapz_lab4
                     
                 else if (input == "d")
                 {
-                    if (index2 != map.lake.size - 1)
+                    if (index2 != map.lake.location.size - 1)
                     {
                         if (map.lake.matrix[index1, index2 + 1] != 0) 
                         {
@@ -99,8 +99,8 @@ namespace mapz_lab4
         }
         public void randomFishIndexFunc(Lake lake, Random random, Fish fish)
         {
-            fish.index1 = random.Next(0, lake.size);
-            fish.index2 = random.Next(0, lake.size);
+            fish.index1 = random.Next(0, lake.location.size);
+            fish.index2 = random.Next(0, lake.location.size);
             if (lake.matrix[fish.index1, fish.index2] == 0) randomFishIndexFunc(lake, random, fish);
             else
             {

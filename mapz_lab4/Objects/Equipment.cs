@@ -10,7 +10,7 @@ namespace mapz_lab4
     {
         public int wormsAmount { get; set; }
         public int baitAmount { get; set; }
-        Stick stick;
+        public Stick stick;
         public Equipment() 
         { 
             wormsAmount = 5;
