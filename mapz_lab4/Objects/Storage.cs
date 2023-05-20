@@ -29,19 +29,18 @@ namespace mapz_lab4
         public void openStorage(startGameMenu str, Character hero)
         {
             Console.Clear();
-            Console.WriteLine("Hi there. Here you can buy or sell smth");
             while (true)
             {
                 string choice = mainStorageText();
-                if (choice == "B")
+                if (choice == "B" || choice == "b")
                 {
                     buyingFunction(hero);
                 }
-                if (choice == "S")
+                if (choice == "S" || choice == "s")
                 {
                     sellFunction(hero);
                 }
-                if (choice == "Q")
+                if (choice == "Q" || choice == "q")
                 {
                     break;
                 }
@@ -49,16 +48,7 @@ namespace mapz_lab4
         }
         public string mainStorageText()
         {
-            Console.WriteLine("You can buy : ");
-            for (int i = 0; i < Goods.Count; i++)
-            {
-                Console.WriteLine(Goods[i] + " - " + Costs[i] + " coins.");
-            }
-            Console.WriteLine("Or sell fishes: ");
-            Console.WriteLine("J - 3 coins.");
-            Console.WriteLine("Q - 5 coins.");
-            Console.WriteLine("K - 7 coins.");
-            Console.WriteLine("A - 10 coins.");
+            Console.WriteLine("Welcome to the storage!\nHere You can buy or sell smth : ");
             Console.WriteLine("[B] - to buy\t [S] - to sell\t [Q] - to quit storage");
             string choice = Console.ReadLine();
             return choice;
@@ -68,15 +58,14 @@ namespace mapz_lab4
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Your amounts : ");
-                Console.WriteLine("Bait : " + hero.backpack.equipment.baitAmount);
-                Console.WriteLine("Worms : " + hero.backpack.equipment.wormsAmount);
-                Console.WriteLine("Stick waist : " + hero.backpack.equipment.stick.waist);
+                Console.WriteLine("Buying menu : \n");
+                showAmounts(hero);
                 Console.WriteLine("Options : ");
                 for (int i = 0; i < Goods.Count; i++)
                 {
                     Console.WriteLine("[" + (i + 1) + "] - " + Goods[i] + " - " + Costs[i] + " coins.");
                 }
+                Console.WriteLine("[4] - new location");
                 Console.WriteLine("[0] - quit buying");
                 Console.WriteLine("What do you want to buy : ");
                 int choice2 = int.Parse(Console.ReadLine());
@@ -125,6 +114,21 @@ namespace mapz_lab4
                         break;
                     }
                 }
+                if (choice2 == 4)
+                {
+                    bool answer = checkIfEnoughMoney(50, hero);
+                    if (answer)
+                    {
+                        hero.moneyAmount -= 50;
+                        hero.expirience++;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        break;
+                    }
+                }
                 if (choice2 == 0)
                 {
                     break;
@@ -136,11 +140,12 @@ namespace mapz_lab4
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Your amounts : ");
-                Console.WriteLine("Bait : " + hero.backpack.equipment.baitAmount);
-                Console.WriteLine("Worms : " + hero.backpack.equipment.wormsAmount);
+                Console.WriteLine("Selling menu : \n");
+                showAmounts(hero);
                 Console.WriteLine("Options to sell : ");
-                Console.WriteLine("[1] - bait, you get 5 coins \t [2] - worm, you get 3 coins \t [0] - quit selling");
+                Console.WriteLine("[1] - bait, you get 5 coins \n[2] - worm, you get 3 coins");
+                Console.WriteLine("[3] - fish J, you get 3 coins\n[4] - fish Q, you get 5 coins\n[5] - fish K, you get 7 coins\n[6] - fish A, you get 10 coins\n[0] - quit sellling");
+                Console.WriteLine("What do you want to sell : ");
                 int choice = int.Parse(Console.ReadLine());
                 if (choice == 1)
                 {
@@ -180,7 +185,7 @@ namespace mapz_lab4
         }
         public bool checkIfEnoughMoney(int price, Character hero)
         {
-            if(hero.moneyAmount > price)
+            if(hero.moneyAmount >= price)
             {
                 return true;
             }
@@ -193,6 +198,18 @@ namespace mapz_lab4
                 return true;
             }
             return false;
+        }
+        public void showAmounts(Character hero)
+        {
+            Console.WriteLine("Your amounts : ");
+            Console.WriteLine("Money : " + hero.moneyAmount);
+            Console.WriteLine("Bait : " + hero.backpack.equipment.baitAmount);
+            Console.WriteLine("Worms : " + hero.backpack.equipment.wormsAmount);
+            Console.WriteLine("Stick waist : " + hero.backpack.equipment.stick.waist);
+            Console.WriteLine("Fish J : " + hero.backpack.fishJ_Amount);
+            Console.WriteLine("Fish Q : " + hero.backpack.fishQ_Amount);
+            Console.WriteLine("Fish K : " + hero.backpack.fishK_Amount);
+            Console.WriteLine("Fish A : " + hero.backpack.fishA_Amount);
         }
     }
 }

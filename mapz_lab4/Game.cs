@@ -7,29 +7,36 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+public class GlobalVariables
+{
+    public static bool finish = false;
+}
+
 namespace mapz_lab4
 {
     public class Game
     {
         private static Game INSTANCE;
-        Map map = new Map(LakeBuilder.lake1());
+        public Map map;
         private Game() { }
         public static Game getInstance() {
             if (INSTANCE == null) INSTANCE = new Game();
             return INSTANCE;
         }
-        public void game(int sizeOfLocation)
+        public void game(int size, Character hero)
         {
-            Task.Run(ReadToConsoleAsync);
+            map = new Map(LakeBuilder.lake1());
+            Task.Run(() => ReadToConsoleAsync(hero));
             Task.Run(SpawnFish);
-            while (true)
+            while(true)  
             {
                 Console.Clear();
                 map.showLake();
                 Thread.Sleep(500);
+                if(GlobalVariables.finish) break;
             }
         }
-        async Task ReadToConsoleAsync()
+        async Task ReadToConsoleAsync(Character hero)
         {
             while (true) {
                 string input = Console.ReadLine();
@@ -46,55 +53,125 @@ namespace mapz_lab4
                         }
                     }
                 }
-                if (input == "w")
+                if (input == "w" || input == "W")
                 {
                     if (index1 != 0)
                     {
                         if (map.lake.matrix[index1 - 1, index2] != 0)
                         {
                             map.lake.matrix[index1, index2] = 1;
+                            if (map.lake.matrix[index1 - 1, index2] == 3)
+                            {
+                                hero.backpack.fishJ_Amount++;
+                            }
+                            if (map.lake.matrix[index1 - 1, index2] == 4)
+                            {
+                                hero.backpack.fishQ_Amount++;
+                            }
+                            if (map.lake.matrix[index1 - 1, index2] == 5)
+                            {
+                                hero.backpack.fishK_Amount++;
+                            }
+                            if (map.lake.matrix[index1 - 1, index2] == 6)
+                            {
+                                hero.backpack.fishA_Amount++;
+                            }
                             map.lake.matrix[index1 - 1, index2] = 2;
                         }
                     }
                 }
 
-                else if (input == "a")
+                else if (input == "a" || input == "A")
                 {
                     if (index2 != 0)
                     {
                         if (map.lake.matrix[index1, index2 - 1] != 0)
                         {
                             map.lake.matrix[index1, index2] = 1;
+                            if (map.lake.matrix[index1, index2 - 1] == 3)
+                            {
+                                hero.backpack.fishJ_Amount++;
+                            }
+                            if (map.lake.matrix[index1, index2 - 1] == 4)
+                            {
+                                hero.backpack.fishQ_Amount++;
+                            }
+                            if (map.lake.matrix[index1, index2 - 1] == 5)
+                            {
+                                hero.backpack.fishK_Amount++;
+                            }
+                            if (map.lake.matrix[index1, index2 - 1] == 6)
+                            {
+                                hero.backpack.fishA_Amount++;
+                            }
                             map.lake.matrix[index1, index2 - 1] = 2;
                         }
                     }
                 }
                      
-                else if (input == "s")
+                else if (input == "s" || input == "S")
                 {
                     if (index1 != map.lake.location.size - 1)
                     {
                         if (map.lake.matrix[index1 + 1, index2] != 0)
                         {
                             map.lake.matrix[index1, index2] = 1;
+                            if (map.lake.matrix[index1 + 1, index2] == 3)
+                            {
+                                hero.backpack.fishJ_Amount++;
+                            }
+                            if (map.lake.matrix[index1 + 1, index2] == 4)
+                            {
+                                hero.backpack.fishQ_Amount++;
+                            }
+                            if (map.lake.matrix[index1 + 1, index2] == 5)
+                            {
+                                hero.backpack.fishK_Amount++;
+                            }
+                            if (map.lake.matrix[index1 + 1, index2] == 6)
+                            {
+                                hero.backpack.fishA_Amount++;
+                            }
                             map.lake.matrix[index1 + 1, index2] = 2;
                         }
                     }
                 }
                     
-                else if (input == "d")
+                else if (input == "d" || input == "D")
                 {
                     if (index2 != map.lake.location.size - 1)
                     {
                         if (map.lake.matrix[index1, index2 + 1] != 0) 
                         {
                             map.lake.matrix[index1, index2] = 1;
+                            if(map.lake.matrix[index1, index2 + 1] == 3)
+                            {
+                                hero.backpack.fishJ_Amount++;
+                            }
+                            if(map.lake.matrix[index1, index2 + 1] == 4)
+                            {
+                                hero.backpack.fishQ_Amount++;
+                            }
+                            if(map.lake.matrix[index1, index2 + 1] == 5)
+                            {
+                                hero.backpack.fishK_Amount++;
+                            }
+                            if(map.lake.matrix[index1, index2 + 1] == 6)
+                            {
+                                hero.backpack.fishA_Amount++;
+                            }
                             map.lake.matrix[index1, index2 + 1] = 2;
                         }
                     }
                 }
-                    
-
+                else if(input == "0")
+                {
+                    GlobalVariables.finish = true;
+                }
+                if(GlobalVariables.finish)
+                {
+                    break;
+                }
             }
         }
         public void randomFishIndexFunc(Lake lake, Random random, Fish fish)
@@ -129,14 +206,18 @@ namespace mapz_lab4
                 Fish fish = factory.createFish();
                 randomFishIndexFunc(map.lake, random, fish);
                 Task.Run(() => DeleteFish(fish, random, map.lake));
+                if (GlobalVariables.finish)
+                {
+                    break;
+                }
             }
+
         }
         async Task DeleteFish(Fish fish, Random random, Lake lake)
         {
-            int time = random.Next(5,10);
+            int time = random.Next(10,20);
             Thread.Sleep(time * 1000);
             lake.matrix[fish.index1, fish.index2] = 1;
-
         }
     }
 }

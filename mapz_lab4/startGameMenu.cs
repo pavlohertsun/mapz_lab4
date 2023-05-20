@@ -20,9 +20,9 @@ namespace mapz_lab4
                 Console.Clear();
                 Console.WriteLine("Your starter character's charackteristicks : ");
                 Console.WriteLine(hero.ToString());
-                Console.WriteLine("DNow you can :?\n[F] - start fishing\t [S] - open storage\t [Q] - quit the qame");
+                Console.WriteLine("Now you can :\n[F] - start fishing\t [S] - open storage\t [Q] - quit the qame");
                 string chr = Console.ReadLine();
-                if (chr == "F")
+                if (chr == "F" || chr == "f")
                 {
                     Console.WriteLine("Available locations : ");
                     for (int i = 0; i < hero.expirience; i++)
@@ -31,14 +31,14 @@ namespace mapz_lab4
                     }
                     int choice = int.Parse(Console.ReadLine());
                     Game game = Game.getInstance();
-                    game.game(LocationCreator.LocationsList[choice - 1].size);
+                    game.game(LocationCreator.LocationsList[choice - 1].size, hero);
                 }
-                if (chr == "S")
+                if (chr == "S" || chr == "s")
                 {
                     Storage storage = new Storage();
                     storage.openStorage(this, hero);
                 }
-                else
+                if (chr == "Q" || chr == "q") 
                 {
                     Environment.Exit(0);
                 }

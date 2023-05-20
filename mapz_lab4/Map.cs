@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mapz_lab4
 {
-    class Map
+    public class Map
     {
         enum LakeSymbols{
             LAND = 0,
@@ -39,7 +39,6 @@ namespace mapz_lab4
             for (int i = 0; i < lake.location.size; ++i) {
                 for(int k = 0;k< spacesAmount;++k)textLake += " ";
                 textLake += "|";
-                //textLake += printSymbols(" ", spacesFrom);
                 for (int j = 0; j < lake.location.size; ++j) {
                     if (lake.matrix[i, j] == ((int)LakeSymbols.LAND)) {
                         textLake += "x ";
@@ -68,9 +67,8 @@ namespace mapz_lab4
                     {
                         textLake += "A ";
                     }
+                    
                 }
-
-                //textLake += printSymbols(" ",spacesFrom);
                 textLake += "|\n";
             }
             textLake += printSymbols(" ", spacesAmount);
