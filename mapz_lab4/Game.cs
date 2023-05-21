@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 public class GlobalVariables
 {
     public static bool finish = false;
+    public static int iterator = 0;
 }
 
 namespace mapz_lab4
@@ -62,19 +63,55 @@ namespace mapz_lab4
                             map.lake.matrix[index1, index2] = 1;
                             if (map.lake.matrix[index1 - 1, index2] == 3)
                             {
-                                hero.backpack.fishJ_Amount++;
+                                if(checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishJ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 4)
                             {
-                                hero.backpack.fishQ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishQ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 5)
                             {
-                                hero.backpack.fishK_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishK_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 6)
                             {
-                                hero.backpack.fishA_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishA_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             map.lake.matrix[index1 - 1, index2] = 2;
                         }
@@ -90,19 +127,55 @@ namespace mapz_lab4
                             map.lake.matrix[index1, index2] = 1;
                             if (map.lake.matrix[index1, index2 - 1] == 3)
                             {
-                                hero.backpack.fishJ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishJ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 4)
                             {
-                                hero.backpack.fishQ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishQ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 5)
                             {
-                                hero.backpack.fishK_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishK_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 6)
                             {
-                                hero.backpack.fishA_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishA_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             map.lake.matrix[index1, index2 - 1] = 2;
                         }
@@ -118,19 +191,55 @@ namespace mapz_lab4
                             map.lake.matrix[index1, index2] = 1;
                             if (map.lake.matrix[index1 + 1, index2] == 3)
                             {
-                                hero.backpack.fishJ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishJ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 4)
                             {
-                                hero.backpack.fishQ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishQ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 5)
                             {
-                                hero.backpack.fishK_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishK_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 6)
                             {
-                                hero.backpack.fishA_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishA_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             map.lake.matrix[index1 + 1, index2] = 2;
                         }
@@ -146,19 +255,55 @@ namespace mapz_lab4
                             map.lake.matrix[index1, index2] = 1;
                             if(map.lake.matrix[index1, index2 + 1] == 3)
                             {
-                                hero.backpack.fishJ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishJ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 4)
                             {
-                                hero.backpack.fishQ_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishQ_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 5)
                             {
-                                hero.backpack.fishK_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishK_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 6)
                             {
-                                hero.backpack.fishA_Amount++;
+                                if (checkIfEnoughWorms(hero))
+                                {
+                                    hero.backpack.fishA_Amount++;
+                                    GlobalVariables.iterator++;
+                                    changeCharacter(hero);
+                                }
+                                else
+                                {
+                                    GlobalVariables.finish = true;
+                                }
                             }
                             map.lake.matrix[index1, index2 + 1] = 2;
                         }
@@ -194,7 +339,7 @@ namespace mapz_lab4
             Random random = new Random();
             AbstractFactory factory;
             while (true) {
-                int time = random.Next(10,20);
+                int time = random.Next(3,7);
                 Thread.Sleep(time * 1000);
                 int randomFishIndex = random.Next(0,3);
 
@@ -211,13 +356,31 @@ namespace mapz_lab4
                     break;
                 }
             }
-
         }
         async Task DeleteFish(Fish fish, Random random, Lake lake)
         {
             int time = random.Next(10,20);
             Thread.Sleep(time * 1000);
             lake.matrix[fish.index1, fish.index2] = 1;
+        }
+        public void changeCharacter(Character hero)
+        {
+            hero.stamina -= 2;
+            hero.attentiveness += 0.2;
+            hero.skills += 0.2;
+            hero.backpack.equipment.wormsAmount--;
+            if(GlobalVariables.iterator == 10)
+            {
+                hero.expirience++;
+            }
+        }
+        public bool checkIfEnoughWorms(Character hero)
+        {
+            if(hero.backpack.equipment.wormsAmount > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

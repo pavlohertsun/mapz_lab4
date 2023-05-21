@@ -25,7 +25,7 @@ namespace mapz_lab4
         }
         public override string ToString()
         {
-            string str = "Money amount : " + moneyAmount + " .\n" + "Stamina : " + stamina + " , skills : " + skills + " , attentiveness : " + attentiveness + " , expirience : " + +expirience + " .";
+            string str = "Money amount : " + moneyAmount + " .\n" + "Stamina : " + stamina + " , skills : " + (int)skills + " , attentiveness : " + (int)attentiveness + " , expirience : " + (int)expirience + " .";
             str += "\nWorms : " + backpack.equipment.wormsAmount + " , bait amount : " + backpack.equipment.baitAmount + " .";
             return str;
         }

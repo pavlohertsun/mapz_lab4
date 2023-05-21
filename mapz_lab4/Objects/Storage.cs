@@ -17,12 +17,20 @@ namespace mapz_lab4
             {
                 "Bait",
                 "Worm",
+                "Fish J",
+                "Fish Q",
+                "Fish K",
+                "Fish A",
                 "Renew stick"
             };
             Costs = new List<int>()
             {
                 5,
                 3,
+                3,
+                5,
+                7,
+                10,
                 7
             };
         }
@@ -48,7 +56,7 @@ namespace mapz_lab4
         }
         public string mainStorageText()
         {
-            Console.WriteLine("Welcome to the storage!\nHere You can buy or sell smth : ");
+            Console.WriteLine("Welcome to the storage!\nHere you can buy or sell smth : ");
             Console.WriteLine("[B] - to buy\t [S] - to sell\t [Q] - to quit storage");
             string choice = Console.ReadLine();
             return choice;
@@ -61,11 +69,12 @@ namespace mapz_lab4
                 Console.WriteLine("Buying menu : \n");
                 showAmounts(hero);
                 Console.WriteLine("Options : ");
-                for (int i = 0; i < Goods.Count; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     Console.WriteLine("[" + (i + 1) + "] - " + Goods[i] + " - " + Costs[i] + " coins.");
                 }
-                Console.WriteLine("[4] - new location");
+                Console.WriteLine("[3] - Renew stick - 7 coins.");
+                Console.WriteLine("[4] - New location - 100 coins.");
                 Console.WriteLine("[0] - quit buying");
                 Console.WriteLine("What do you want to buy : ");
                 int choice2 = int.Parse(Console.ReadLine());
@@ -101,10 +110,10 @@ namespace mapz_lab4
                 }
                 if (choice2 == 3)
                 {
-                    bool answer = checkIfEnoughMoney(Costs[2], hero);
+                    bool answer = checkIfEnoughMoney(Costs[6], hero);
                     if (answer)
                     {
-                        hero.moneyAmount -= Costs[2];
+                        hero.moneyAmount -= Costs[6];
                         hero.backpack.equipment.stick.waist = 10;
                     }
                     else
@@ -116,10 +125,10 @@ namespace mapz_lab4
                 }
                 if (choice2 == 4)
                 {
-                    bool answer = checkIfEnoughMoney(50, hero);
+                    bool answer = checkIfEnoughMoney(100, hero);
                     if (answer)
                     {
-                        hero.moneyAmount -= 50;
+                        hero.moneyAmount -= 100;
                         hero.expirience++;
                     }
                     else
@@ -143,8 +152,11 @@ namespace mapz_lab4
                 Console.WriteLine("Selling menu : \n");
                 showAmounts(hero);
                 Console.WriteLine("Options to sell : ");
-                Console.WriteLine("[1] - bait, you get 5 coins \n[2] - worm, you get 3 coins");
-                Console.WriteLine("[3] - fish J, you get 3 coins\n[4] - fish Q, you get 5 coins\n[5] - fish K, you get 7 coins\n[6] - fish A, you get 10 coins\n[0] - quit sellling");
+                for (int i = 0; i < Goods.Count - 1; i++)
+                {
+                    Console.WriteLine("[" + (i + 1) + "] - " + Goods[i] + " - you get " + Costs[i] + " coins.");
+                }
+                Console.WriteLine("[0] - quit selling");
                 Console.WriteLine("What do you want to sell : ");
                 int choice = int.Parse(Console.ReadLine());
                 if (choice == 1)
@@ -174,6 +186,66 @@ namespace mapz_lab4
                     {
                         Console.Clear ();
                         Console.WriteLine("Not enough worms to sell. Returning to the main menu of the storage.\n\n");
+                        break;
+                    }
+                }
+                if (choice == 3)
+                {
+                    bool answer = checkIfEnoughItem(hero.backpack.fishJ_Amount);
+                    if (answer)
+                    {
+                        hero.backpack.fishJ_Amount--;
+                        hero.moneyAmount += Costs[2];
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        break;
+                    }
+                }
+                if (choice == 4)
+                {
+                    bool answer = checkIfEnoughItem(hero.backpack.fishQ_Amount);
+                    if (answer)
+                    {
+                        hero.backpack.fishQ_Amount--;
+                        hero.moneyAmount += Costs[3];
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        break;
+                    }
+                }
+                if (choice == 5)
+                {
+                    bool answer = checkIfEnoughItem(hero.backpack.fishK_Amount);
+                    if (answer)
+                    {
+                        hero.backpack.fishK_Amount--;
+                        hero.moneyAmount += Costs[4];
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        break;
+                    }
+                }
+                if (choice == 6)
+                {
+                    bool answer = checkIfEnoughItem(hero.backpack.fishA_Amount);
+                    if (answer)
+                    {
+                        hero.backpack.fishA_Amount--;
+                        hero.moneyAmount += Costs[5];
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
                         break;
                     }
                 }

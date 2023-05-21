@@ -11,7 +11,7 @@ namespace mapz_lab4
         public int waist { get; set; }
         public Stick()
         {
-            waist = 5;
+            waist = 10;
         }
     }
 }
