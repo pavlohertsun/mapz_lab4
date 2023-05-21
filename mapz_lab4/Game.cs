@@ -26,6 +26,7 @@ namespace mapz_lab4
         }
         public void game(int size, Character hero)
         {
+            GlobalVariables.finish = false;
             map = new Map(LakeBuilder.lake1());
             Task.Run(() => ReadToConsoleAsync(hero));
             Task.Run(SpawnFish);
@@ -372,6 +373,7 @@ namespace mapz_lab4
             if(GlobalVariables.iterator == 10)
             {
                 hero.expirience++;
+                GlobalVariables.iterator = 0;
             }
         }
         public bool checkIfEnoughWorms(Character hero)
