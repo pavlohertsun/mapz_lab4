@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Location.Location
 {
     public class Lake
     {

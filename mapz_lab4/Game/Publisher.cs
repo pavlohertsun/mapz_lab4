@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Game.Game
 {
     public class Publisher
     {
         public List<string> Fishes;
-        public Publisher() 
-        { 
+        public Publisher()
+        {
             Fishes = new List<string>()
             {
                 "Fish J",
@@ -24,12 +24,26 @@ namespace mapz_lab4
         public Fish randomFishToSpawn()
         {
             Random rand = new Random();
-            int index = rand.Next(0, Fishes.Count - 1);
+            int[] array = new int[Fishes.Count];
+            int max = int.MinValue;
+            int index = 0;
+            for (int i = 0; i < Fishes.Count; i++)
+            {
+                array[i] = rand.Next(0, 100);
+            }
+            for (int i = 0; i < Fishes.Count; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    index = i;
+                }
+            }
             AbstractFactory factory;
-            if (index == 0) factory = new FishAFactory();
-            else if (index == 1) factory = new FishJFactory();
+            if (index == 0) factory = new FishJFactory();
+            else if (index == 1) factory = new FishQFactory();
             else if (index == 2) factory = new FishKFactory();
-            else factory = new FishQFactory();
+            else factory = new FishAFactory();
             Fish fish = factory.createFish();
             return fish;
         }

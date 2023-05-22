@@ -5,23 +5,23 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Location
 {
     public class Location
     {
-        public string name {  get; set; }
+        public string name { get; set; }
         public int size { get; set; }
         public List<string> availableFishes { get; set; }
 
-        public Location(string name, int size, List<string> availableFishes) 
-        { 
+        public Location(string name, int size, List<string> availableFishes)
+        {
             this.name = name;
             this.size = size;
             this.availableFishes = availableFishes;
         }
         public override string ToString()
         {
-            string str =  "Name of location : " + name + " . Size of location : " + size + " . Available fishes : ";
+            string str = "Name of location : " + name + " . Size of location : " + size + " . Available fishes : ";
             foreach (var fish in availableFishes)
             {
                 str += fish + " ";
@@ -63,7 +63,8 @@ namespace mapz_lab4
     static class LocationCreator
     {
         public static List<Location> LocationsList = new List<Location>();
-        static LocationCreator(){
+        static LocationCreator()
+        {
             addLake1();
             addLake2();
             addLake3();

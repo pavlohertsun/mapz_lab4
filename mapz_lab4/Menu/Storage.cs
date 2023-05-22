@@ -4,15 +4,16 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mapz_lab4.Hero;
 
-namespace mapz_lab4
+namespace mapz_lab4.Menu
 {
     public class Storage
     {
         public List<string> Goods;
         public List<int> Costs;
-        public Storage() 
-        { 
+        public Storage()
+        {
             Goods = new List<string>()
             {
                 "Bait",
@@ -89,7 +90,7 @@ namespace mapz_lab4
                     }
                     else
                     {
-                        Console.Clear ();
+                        Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
                         break;
                     }
@@ -104,7 +105,7 @@ namespace mapz_lab4
                     }
                     else
                     {
-                        Console.Clear ();
+                        Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
                         break;
                     }
@@ -186,7 +187,7 @@ namespace mapz_lab4
                     }
                     else
                     {
-                        Console.Clear ();
+                        Console.Clear();
                         Console.WriteLine("Not enough bait to sell. Returning to the main menu of the storage.\n\n");
                         break;
                     }
@@ -201,7 +202,7 @@ namespace mapz_lab4
                     }
                     else
                     {
-                        Console.Clear ();
+                        Console.Clear();
                         Console.WriteLine("Not enough worms to sell. Returning to the main menu of the storage.\n\n");
                         break;
                     }
@@ -274,7 +275,7 @@ namespace mapz_lab4
         }
         public bool checkIfEnoughMoney(int price, Man hero)
         {
-            if(hero.moneyAmount >= price)
+            if (hero.moneyAmount >= price)
             {
                 return true;
             }
@@ -282,7 +283,7 @@ namespace mapz_lab4
         }
         public bool checkIfEnoughItem(int number)
         {
-            if(number > 0)
+            if (number > 0)
             {
                 return true;
             }

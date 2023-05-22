@@ -1,5 +1,6 @@
 ﻿using mapz_lab4.Factory;
 using mapz_lab4.Fishes;
+using mapz_lab4.Hero;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Game
 {
     public class ProxyGame : Game
     {
         public DefaultGame proxy;
         public ProxyGame(DefaultGame game)
         {
-            this.proxy = game;
+            proxy = game;
         }
 
         public override void game(int size, Man hero, Stick stick, bool useBait)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4
+namespace mapz_lab4.Hero
 {
     public class Man
     {
@@ -14,6 +14,7 @@ namespace mapz_lab4
         public int expirience { get; set; }
         public int moneyAmount { get; set; }
         public Backpack backpack { get; set; }
+        public State state { get; set; }
         public Man()
         {
             stamina = 100;
@@ -25,7 +26,7 @@ namespace mapz_lab4
         }
         public override string ToString()
         {
-            string str = "Money amount : " + moneyAmount + " .\n" + "Stamina : " + stamina + " , skills : " + (int)skills + " , attentiveness : " + (int)attentiveness + " , expirience : " + (int)expirience + " .";
+            string str = "Money amount : " + moneyAmount + " .\n" + "Stamina : " + stamina + " , skills : " + (int)skills + " , attentiveness : " + (int)attentiveness + " , expirience : " + expirience + " .";
             str += "\nWorms : " + backpack.equipment.wormsAmount + " , bait amount : " + backpack.equipment.baitAmount + " .";
             return str;
         }

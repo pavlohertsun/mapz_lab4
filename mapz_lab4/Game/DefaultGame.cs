@@ -1,6 +1,7 @@
-﻿using mapz_lab4;
-using mapz_lab4.Factory;
+﻿using mapz_lab4.Factory;
 using mapz_lab4.Fishes;
+using mapz_lab4.Hero;
+using mapz_lab4.Location;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
@@ -16,14 +17,15 @@ public class GlobalVariables
     public static bool notify = false;
 }
 
-namespace mapz_lab4
+namespace mapz_lab4.Game
 {
     public class DefaultGame : Game
     {
         private static DefaultGame INSTANCE;
         public Map map;
         public DefaultGame() { }
-        public static DefaultGame getInstance() {
+        public static DefaultGame getInstance()
+        {
             if (INSTANCE == null) INSTANCE = new DefaultGame();
             return INSTANCE;
         }
@@ -33,25 +35,26 @@ namespace mapz_lab4
             map = new Map(LakeBuilder.lake1());
             Task.Run(() => ReadToConsoleAsync(hero, stick));
             Task.Run(() => SpawnFish(useBait));
-            while(true)  
+            while (true)
             {
                 Console.Clear();
                 map.showLake();
                 Thread.Sleep(500);
-                if(GlobalVariables.finish) break;
+                if (GlobalVariables.finish) break;
             }
         }
         async Task ReadToConsoleAsync(Man hero, Stick stick)
         {
-            while (true) {
+            while (true)
+            {
                 string input = Console.ReadLine();
                 int index1 = 0;
                 int index2 = 0;
                 for (int i = 0; i < map.lake.location.size; ++i)
                 {
-                    for (int j = 0; j < map.lake.location.size; ++j) 
+                    for (int j = 0; j < map.lake.location.size; ++j)
                     {
-                        if (map.lake.matrix[i,j] == 2)
+                        if (map.lake.matrix[i, j] == 2)
                         {
                             index1 = i;
                             index2 = j;
@@ -67,9 +70,9 @@ namespace mapz_lab4
                             map.lake.matrix[index1, index2] = 1;
                             if (map.lake.matrix[index1 - 1, index2] == 3)
                             {
-                                if(checkIfEnoughWorms(hero))
+                                if (checkIfEnoughWorms(hero))
                                 {
-                                    if(checkIfCatched(stick))
+                                    if (checkIfCatched(stick))
                                     {
                                         hero.backpack.fishJ_Amount++;
                                         GlobalVariables.iterator++;
@@ -217,7 +220,7 @@ namespace mapz_lab4
                             {
                                 if (checkIfEnoughWorms(hero))
                                 {
-                                    if(checkIfCatched(stick))
+                                    if (checkIfCatched(stick))
                                     {
                                         hero.backpack.fishQ_Amount++;
                                         GlobalVariables.iterator++;
@@ -298,7 +301,7 @@ namespace mapz_lab4
                         }
                     }
                 }
-                     
+
                 else if (input == "s" || input == "S")
                 {
                     if (index1 != map.lake.location.size - 1)
@@ -418,15 +421,15 @@ namespace mapz_lab4
                         }
                     }
                 }
-                    
+
                 else if (input == "d" || input == "D")
                 {
                     if (index2 != map.lake.location.size - 1)
                     {
-                        if (map.lake.matrix[index1, index2 + 1] != 0) 
+                        if (map.lake.matrix[index1, index2 + 1] != 0)
                         {
                             map.lake.matrix[index1, index2] = 1;
-                            if(map.lake.matrix[index1, index2 + 1] == 3)
+                            if (map.lake.matrix[index1, index2 + 1] == 3)
                             {
                                 if (checkIfEnoughWorms(hero))
                                 {
@@ -453,7 +456,7 @@ namespace mapz_lab4
                                     break;
                                 }
                             }
-                            if(map.lake.matrix[index1, index2 + 1] == 4)
+                            if (map.lake.matrix[index1, index2 + 1] == 4)
                             {
                                 if (checkIfEnoughWorms(hero))
                                 {
@@ -480,7 +483,7 @@ namespace mapz_lab4
                                     break;
                                 }
                             }
-                            if(map.lake.matrix[index1, index2 + 1] == 5)
+                            if (map.lake.matrix[index1, index2 + 1] == 5)
                             {
                                 if (checkIfEnoughWorms(hero))
                                 {
@@ -507,7 +510,7 @@ namespace mapz_lab4
                                     break;
                                 }
                             }
-                            if(map.lake.matrix[index1, index2 + 1] == 6)
+                            if (map.lake.matrix[index1, index2 + 1] == 6)
                             {
                                 if (checkIfEnoughWorms(hero))
                                 {
@@ -523,10 +526,10 @@ namespace mapz_lab4
                                         changeCharacter(hero);
                                     }
                                     bool breakFishing = hero.backpack.equipment.subWorm();
-                                    if (breakFishing) 
+                                    if (breakFishing)
                                     {
-                                        GlobalVariables.finish = true; 
-                                        break; 
+                                        GlobalVariables.finish = true;
+                                        break;
                                     }
                                 }
                                 else
@@ -539,11 +542,11 @@ namespace mapz_lab4
                         }
                     }
                 }
-                else if(input == "0")
+                else if (input == "0")
                 {
                     GlobalVariables.finish = true;
                 }
-                if(GlobalVariables.finish)
+                if (GlobalVariables.finish)
                 {
                     break;
                 }
@@ -568,13 +571,14 @@ namespace mapz_lab4
         {
             Random random = new Random();
             Publisher publisher = new Publisher();
-            while (true) {
+            while (true)
+            {
                 int time = 0;
                 if (useBait)
                 {
                     time = 3;
                 }
-                else time = random.Next(4,7);
+                else time = random.Next(4, 7);
                 Thread.Sleep(time * 1000);
                 Fish fish = publisher.randomFishToSpawn();
                 randomFishIndexFunc(map.lake, random, fish);
@@ -587,7 +591,7 @@ namespace mapz_lab4
         }
         async Task DeleteFish(Fish fish, Random random, Lake lake)
         {
-            int time = random.Next(10,20);
+            int time = random.Next(10, 20);
             Thread.Sleep(time * 1000);
             lake.matrix[fish.index1, fish.index2] = 1;
         }
@@ -596,7 +600,7 @@ namespace mapz_lab4
             hero.stamina -= 2;
             hero.attentiveness += 0.2;
             hero.skills += 0.2;
-            if(GlobalVariables.iterator == 10)
+            if (GlobalVariables.iterator == 10)
             {
                 hero.expirience++;
                 GlobalVariables.iterator = 0;
@@ -604,7 +608,7 @@ namespace mapz_lab4
         }
         public bool checkIfEnoughWorms(Man hero)
         {
-            if(GlobalVariables.notify)
+            if (GlobalVariables.notify)
             {
                 return false;
             }
@@ -613,8 +617,8 @@ namespace mapz_lab4
         public bool checkIfCatched(Stick stick)
         {
             Random rand = new Random();
-            int chance = rand.Next(1,100);
-            if(chance < stick.chanceToCatch)
+            int chance = rand.Next(1, 100);
+            if (chance < stick.chanceToCatch)
             {
                 return true;
             }
