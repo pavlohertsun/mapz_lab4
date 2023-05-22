@@ -14,6 +14,7 @@ namespace mapz_lab4
         public Stick()
         {
             waist = 10;
+            chanceToCatch = 0;
         }
     }
 }

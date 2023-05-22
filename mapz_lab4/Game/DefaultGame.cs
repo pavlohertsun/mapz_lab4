@@ -28,7 +28,7 @@ namespace mapz_lab4.Objects
             if (INSTANCE == null) INSTANCE = new DefaultGame();
             return INSTANCE;
         }
-        public override void game(int size, Man hero, Stick stick, bool useBait)
+        public override void game(int size, Gender hero, Stick stick, bool useBait)
         {
             GlobalVariables.finish = false;
             map = new Map(LakeBuilder.lake1());
@@ -42,7 +42,7 @@ namespace mapz_lab4.Objects
                 if (GlobalVariables.finish) break;
             }
         }
-        async Task ReadToConsoleAsync(Man hero, Stick stick)
+        async Task ReadToConsoleAsync(Gender hero, Stick stick)
         {
             while (true)
             {
@@ -594,7 +594,7 @@ namespace mapz_lab4.Objects
             Thread.Sleep(time * 1000);
             lake.matrix[fish.index1, fish.index2] = 1;
         }
-        public void changeCharacter(Man hero)
+        public void changeCharacter(Gender hero)
         {
             hero.stamina -= 2;
             hero.attentiveness += 0.2;
@@ -605,7 +605,7 @@ namespace mapz_lab4.Objects
                 GlobalVariables.iterator = 0;
             }
         }
-        public bool checkIfEnoughWorms(Man hero)
+        public bool checkIfEnoughWorms(Gender hero)
         {
             if (GlobalVariables.notify)
             {

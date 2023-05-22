@@ -8,6 +8,6 @@ namespace mapz_lab4.Hero
 {
     public abstract class State
     {
-        public abstract bool checkState();
+        public abstract bool showState();
     }
 }

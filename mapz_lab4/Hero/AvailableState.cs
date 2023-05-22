@@ -8,7 +8,7 @@ namespace mapz_lab4.Hero
 {
     public class AvailableState : State
     {
-        public override bool checkState()
+        public override bool showState()
         {
             Console.WriteLine("You are enable to start fishing!");
             return true;

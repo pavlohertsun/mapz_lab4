@@ -8,7 +8,7 @@ namespace mapz_lab4.Hero
 {
     public class NonAvailableState : State
     {
-        public override bool checkState()
+        public override bool showState()
         {
             Console.WriteLine("Your are too tired, you should have a sleep.");
             return false;

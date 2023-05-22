@@ -12,7 +12,7 @@ namespace mapz_lab4.Objects
         public Level1Stick(Stick stick)
         {
             this.stick = stick;
-            chanceToCatch = 40;
+            chanceToCatch += 20;
             isAvailable = true;
         }
     }

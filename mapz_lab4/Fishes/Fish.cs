@@ -12,5 +12,11 @@ namespace mapz_lab4.Fishes
         public int cost;
         public int index1;
         public int index2;
+        public int randomIndex()
+        {
+            Random rand = new Random(); 
+            int value = rand.Next(0, 100);
+            return value;
+        }
     }
 }

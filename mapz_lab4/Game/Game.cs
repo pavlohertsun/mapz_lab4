@@ -9,6 +9,6 @@ namespace mapz_lab4.Objects
 {
     public abstract class Game
     {
-        public abstract void game(int size, Man hero, Stick stick, bool useBait);
+        public abstract void game(int size, Gender hero, Stick stick, bool useBait);
     }
 }
