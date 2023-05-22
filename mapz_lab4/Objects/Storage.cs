@@ -34,7 +34,7 @@ namespace mapz_lab4
                 7
             };
         }
-        public void openStorage(Fasad str, Character hero, Stick stick1, Stick stick2)
+        public void openStorage(Fasad str, Man hero, Stick stick1, Stick stick2)
         {
             Console.Clear();
             while (true)
@@ -61,7 +61,7 @@ namespace mapz_lab4
             string choice = Console.ReadLine();
             return choice;
         }
-        public void buyingFunction(Character hero, Stick stick1, Stick stick2)
+        public void buyingFunction(Man hero, Stick stick1, Stick stick2)
         {
             while (true)
             {
@@ -161,7 +161,7 @@ namespace mapz_lab4
                 }
             }
         }
-        public void sellFunction(Character hero)
+        public void sellFunction(Man hero)
         {
             while (true)
             {
@@ -272,7 +272,7 @@ namespace mapz_lab4
                 }
             }
         }
-        public bool checkIfEnoughMoney(int price, Character hero)
+        public bool checkIfEnoughMoney(int price, Man hero)
         {
             if(hero.moneyAmount >= price)
             {
@@ -288,7 +288,7 @@ namespace mapz_lab4
             }
             return false;
         }
-        public void showAmounts(Character hero)
+        public void showAmounts(Man hero)
         {
             Console.WriteLine("Your amounts : ");
             Console.WriteLine("Money : " + hero.moneyAmount);

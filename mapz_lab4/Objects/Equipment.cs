@@ -17,6 +17,23 @@ namespace mapz_lab4
             baitAmount = 1;
             stick = new Stick();
         }
-
+        public bool subWorm()
+        {
+            if((wormsAmount - 1) == 0) 
+            {
+                notify();
+                wormsAmount--;
+                return true;
+            }
+            else
+            {
+                wormsAmount--;
+                return false;
+            }
+        }
+        public void notify()
+        {
+            GlobalVariables.notify = true;
+        }
     }
 }

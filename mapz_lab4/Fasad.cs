@@ -10,14 +10,14 @@ namespace mapz_lab4
 {
     public class Fasad
     {
-        public Character hero;
+        public Man man;
         Level1Stick stick;
         Level2Stick upgradedStick;
         public Fasad()
         {
-            hero = new Character();
-            stick = new Level1Stick(hero.backpack.equipment.stick);
-            upgradedStick = new Level2Stick(hero.backpack.equipment.stick);
+            man = new Man();
+            stick = new Level1Stick(man.backpack.equipment.stick);
+            upgradedStick = new Level2Stick(man.backpack.equipment.stick);
         }
         public void printTable()
         {
@@ -25,30 +25,47 @@ namespace mapz_lab4
             {
                 Console.Clear();
                 Console.WriteLine("Your starter character's charackteristicks : ");
-                Console.WriteLine(hero.ToString());
+                Console.WriteLine(man.ToString());
                 Console.WriteLine("Now you can :\n[F] - start fishing\t [S] - open storage\t [R] - sleep\t [Q] - quit the qame");
                 string chr = Console.ReadLine();
                 if (chr == "F" || chr == "f")
                 {
                     Console.WriteLine("Available locations : ");
-                    for (int i = 0; i < hero.expirience; i++)
+                    for (int i = 0; i < man.expirience; i++)
                     {
                         Console.WriteLine("[" + (i + 1) + "] - " + LocationCreator.LocationsList[i].ToString());
                     }
                     int choice = int.Parse(Console.ReadLine());
-                    if (hero.stamina > 0 || hero.backpack.equipment.wormsAmount > 0)
+                    Console.WriteLine("Do you want to use a bait?\n[Y] - for yes\t [N] - for no.");
+                    string choice2 = Console.ReadLine();
+                    if (man.stamina > 0 || man.backpack.equipment.wormsAmount > 0)
                     {
                         if (stick.isAvailable)
                         {
                             DefaultGame game = DefaultGame.getInstance();
-                            //game.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, false);
-                            ProxyGame game1 = new ProxyGame(game);
-                            game1.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, true);
+                            if (choice2 == "Y" || choice2 == "y")
+                            {
+                                ProxyGame game1 = new ProxyGame(game);
+                                game1.game(LocationCreator.LocationsList[choice - 1].size, man, stick, true);
+                                man.backpack.equipment.baitAmount--;
+                            }
+                            if (choice2 == "N" || choice2 == "n")
+                            {
+                                game.game(LocationCreator.LocationsList[choice - 1].size, man, stick, false);
+                            }
                         }
                         if (upgradedStick.isAvailable)
                         {
-                            //DefaultGame game = DefaultGame.getInstance();
-                            //game.game(LocationCreator.LocationsList[choice - 1].size, hero, upgradedStick, false);
+                            DefaultGame game = DefaultGame.getInstance();
+                            if (choice2 == "Y" || choice2 == "y")
+                            {
+                                ProxyGame game1 = new ProxyGame(game);
+                                game1.game(LocationCreator.LocationsList[choice - 1].size, man, upgradedStick, true);
+                            }
+                            if (choice2 == "N" || choice2 == "n")
+                            {
+                                game.game(LocationCreator.LocationsList[choice - 1].size, man, upgradedStick, false);
+                            }
                         }
                     }
                     else
@@ -60,21 +77,20 @@ namespace mapz_lab4
                 if (chr == "S" || chr == "s")
                 {
                     Storage storage = new Storage();
-                    storage.openStorage(this, hero, stick, upgradedStick);
+                    storage.openStorage(this, man, stick, upgradedStick);
                 }
                 if (chr == "R" || chr == "r")
                 {
                     Console.Clear();
                     Console.WriteLine("Sleeping...");
                     Thread.Sleep(30000);
-                    hero.stamina = 100;
                 }
-                if (chr == "Q" || chr == "q") 
+                if (chr == "Q" || chr == "q")
                 {
                     Environment.Exit(0);
                 }
             }
-        }
 
+        }
     }
 }

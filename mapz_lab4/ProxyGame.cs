@@ -17,7 +17,7 @@ namespace mapz_lab4
             this.proxy = game;
         }
 
-        public override void game(int size, Character hero, Stick stick, bool useBait)
+        public override void game(int size, Man hero, Stick stick, bool useBait)
         {
             int value = stick.chanceToCatch;
             hero.expirience++;

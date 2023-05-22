@@ -13,6 +13,7 @@ public class GlobalVariables
 {
     public static bool finish = false;
     public static int iterator = 0;
+    public static bool notify = false;
 }
 
 namespace mapz_lab4
@@ -26,7 +27,7 @@ namespace mapz_lab4
             if (INSTANCE == null) INSTANCE = new DefaultGame();
             return INSTANCE;
         }
-        public override void game(int size, Character hero, Stick stick, bool useBait)
+        public override void game(int size, Man hero, Stick stick, bool useBait)
         {
             GlobalVariables.finish = false;
             map = new Map(LakeBuilder.lake1());
@@ -40,7 +41,7 @@ namespace mapz_lab4
                 if(GlobalVariables.finish) break;
             }
         }
-        async Task ReadToConsoleAsync(Character hero, Stick stick)
+        async Task ReadToConsoleAsync(Man hero, Stick stick)
         {
             while (true) {
                 string input = Console.ReadLine();
@@ -78,10 +79,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 4)
@@ -98,10 +106,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 5)
@@ -113,15 +128,23 @@ namespace mapz_lab4
                                         hero.backpack.fishK_Amount++;
                                         GlobalVariables.iterator++;
                                         changeCharacter(hero);
+
                                     }
                                     else
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 - 1, index2] == 6)
@@ -138,10 +161,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             map.lake.matrix[index1 - 1, index2] = 2;
@@ -170,10 +200,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 4)
@@ -190,10 +227,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 5)
@@ -210,10 +254,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1, index2 - 1] == 6)
@@ -230,10 +281,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             map.lake.matrix[index1, index2 - 1] = 2;
@@ -262,10 +320,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 4)
@@ -282,10 +347,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 5)
@@ -302,10 +374,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if (map.lake.matrix[index1 + 1, index2] == 6)
@@ -322,10 +401,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             map.lake.matrix[index1 + 1, index2] = 2;
@@ -354,10 +440,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 4)
@@ -374,10 +467,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 5)
@@ -394,10 +494,17 @@ namespace mapz_lab4
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing)
+                                    {
+                                        GlobalVariables.finish = true;
+                                        break;
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             if(map.lake.matrix[index1, index2 + 1] == 6)
@@ -409,15 +516,23 @@ namespace mapz_lab4
                                         hero.backpack.fishA_Amount++;
                                         GlobalVariables.iterator++;
                                         changeCharacter(hero);
+
                                     }
                                     else
                                     {
                                         changeCharacter(hero);
                                     }
+                                    bool breakFishing = hero.backpack.equipment.subWorm();
+                                    if (breakFishing) 
+                                    {
+                                        GlobalVariables.finish = true; 
+                                        break; 
+                                    }
                                 }
                                 else
                                 {
                                     GlobalVariables.finish = true;
+                                    break;
                                 }
                             }
                             map.lake.matrix[index1, index2 + 1] = 2;
@@ -452,7 +567,7 @@ namespace mapz_lab4
         async Task SpawnFish(bool useBait)
         {
             Random random = new Random();
-            AbstractFactory factory;
+            Publisher publisher = new Publisher();
             while (true) {
                 int time = 0;
                 if (useBait)
@@ -461,14 +576,7 @@ namespace mapz_lab4
                 }
                 else time = random.Next(4,7);
                 Thread.Sleep(time * 1000);
-                int randomFishIndex = random.Next(0,3);
-
-                if (randomFishIndex == 0) factory = new FishAFactory();
-                else if (randomFishIndex == 1) factory = new FishJFactory();
-                else if (randomFishIndex == 2) factory = new FishKFactory();
-                else  factory = new FishQFactory();
-
-                Fish fish = factory.createFish();
+                Fish fish = publisher.randomFishToSpawn();
                 randomFishIndexFunc(map.lake, random, fish);
                 Task.Run(() => DeleteFish(fish, random, map.lake));
                 if (GlobalVariables.finish)
@@ -483,25 +591,24 @@ namespace mapz_lab4
             Thread.Sleep(time * 1000);
             lake.matrix[fish.index1, fish.index2] = 1;
         }
-        public void changeCharacter(Character hero)
+        public void changeCharacter(Man hero)
         {
             hero.stamina -= 2;
             hero.attentiveness += 0.2;
             hero.skills += 0.2;
-            hero.backpack.equipment.wormsAmount--;
             if(GlobalVariables.iterator == 10)
             {
                 hero.expirience++;
                 GlobalVariables.iterator = 0;
             }
         }
-        public bool checkIfEnoughWorms(Character hero)
+        public bool checkIfEnoughWorms(Man hero)
         {
-            if(hero.backpack.equipment.wormsAmount > 0)
+            if(GlobalVariables.notify)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
         public bool checkIfCatched(Stick stick)
         {

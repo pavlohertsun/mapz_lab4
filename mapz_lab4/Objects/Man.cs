@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mapz_lab4
 {
-    public class Character
+    public class Man
     {
         public double attentiveness { get; set; }
         public double stamina { get; set; }
@@ -14,7 +14,7 @@ namespace mapz_lab4
         public int expirience { get; set; }
         public int moneyAmount { get; set; }
         public Backpack backpack { get; set; }
-        public Character()
+        public Man()
         {
             stamina = 100;
             skills = 5;

@@ -8,6 +8,6 @@ namespace mapz_lab4
 {
     public abstract class Game
     {
-        public abstract void game(int size, Character hero, Stick stick, bool useBait);
+        public abstract void game(int size, Man hero, Stick stick, bool useBait);
     }
 }
