@@ -34,7 +34,7 @@ namespace mapz_lab4
                 7
             };
         }
-        public void openStorage(startGameMenu str, Character hero)
+        public void openStorage(Fasad str, Character hero, Stick stick1, Stick stick2)
         {
             Console.Clear();
             while (true)
@@ -42,7 +42,7 @@ namespace mapz_lab4
                 string choice = mainStorageText();
                 if (choice == "B" || choice == "b")
                 {
-                    buyingFunction(hero);
+                    buyingFunction(hero, stick1, stick2);
                 }
                 if (choice == "S" || choice == "s")
                 {
@@ -61,7 +61,7 @@ namespace mapz_lab4
             string choice = Console.ReadLine();
             return choice;
         }
-        public void buyingFunction(Character hero)
+        public void buyingFunction(Character hero, Stick stick1, Stick stick2)
         {
             while (true)
             {
@@ -75,6 +75,7 @@ namespace mapz_lab4
                 }
                 Console.WriteLine("[3] - Renew stick - 7 coins.");
                 Console.WriteLine("[4] - New location - 100 coins.");
+                Console.WriteLine("[5] - Upgrade stick - 100 coins.");
                 Console.WriteLine("[0] - quit buying");
                 Console.WriteLine("What do you want to buy : ");
                 int choice2 = int.Parse(Console.ReadLine());
@@ -130,6 +131,22 @@ namespace mapz_lab4
                     {
                         hero.moneyAmount -= 100;
                         hero.expirience++;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        break;
+                    }
+                }
+                if (choice2 == 5)
+                {
+                    bool answer = checkIfEnoughMoney(100, hero);
+                    if (answer)
+                    {
+                        hero.moneyAmount -= 100;
+                        stick1.isAvailable = false;
+                        stick2.isAvailable = true;
                     }
                     else
                     {

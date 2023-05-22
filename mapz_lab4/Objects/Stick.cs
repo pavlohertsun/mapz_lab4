@@ -9,6 +9,8 @@ namespace mapz_lab4
     public class Stick
     {
         public int waist { get; set; }
+        public int chanceToCatch;
+        public bool isAvailable;
         public Stick()
         {
             waist = 10;
