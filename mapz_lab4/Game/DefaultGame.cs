@@ -1,7 +1,6 @@
 ﻿using mapz_lab4.Factory;
 using mapz_lab4.Fishes;
 using mapz_lab4.Hero;
-using mapz_lab4.Location;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
@@ -17,7 +16,7 @@ public class GlobalVariables
     public static bool notify = false;
 }
 
-namespace mapz_lab4.Game
+namespace mapz_lab4.Objects
 {
     public class DefaultGame : Game
     {

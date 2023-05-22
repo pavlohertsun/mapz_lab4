@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using mapz_lab4.Hero;
 
-namespace mapz_lab4.Game
+namespace mapz_lab4.Objects
 {
     public abstract class Game
     {

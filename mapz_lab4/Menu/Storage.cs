@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using mapz_lab4.Hero;
 
-namespace mapz_lab4.Menu
+namespace mapz_lab4.Objects
 {
     public class Storage
     {

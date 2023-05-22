@@ -1,6 +1,4 @@
-﻿using mapz_lab4.Game;
-using mapz_lab4.Hero;
-using mapz_lab4.Location;
+﻿using mapz_lab4.Hero;
 using mapz_lab4.Objects;
 using System;
 using System.Collections;
@@ -9,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4.Menu
+namespace mapz_lab4
 {
     public class Fasad
     {

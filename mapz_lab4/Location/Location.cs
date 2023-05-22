@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4.Location
+namespace mapz_lab4.Objects
 {
     public class Location
     {

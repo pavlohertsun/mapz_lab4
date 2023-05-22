@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mapz_lab4.Game.Game
+namespace mapz_lab4.Objects
 {
     public class Publisher
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace mapz_lab4.Game
+namespace mapz_lab4.Objects
 {
     public class ProxyGame : Game
     {
