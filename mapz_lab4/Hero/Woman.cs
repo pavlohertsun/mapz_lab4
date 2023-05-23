@@ -24,10 +24,10 @@ namespace mapz_lab4.Hero
             backpack = new Backpack();
             backpack.equipment.stick.chanceToCatch += 10;
         }
-        public override void sleep()
+        public override void  sleep()
         {
             Console.WriteLine("Sleeping...");
-            Thread.Sleep(3000);
+            Thread.Sleep(30000);
             stamina = 150;
         }
     }

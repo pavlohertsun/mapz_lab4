@@ -8,7 +8,7 @@ namespace mapz_lab4.Objects
 {
     class LakeBuilder
     {
-        public static Lake lake1()
+        public static Lake lakeCreate()
         {
             List<string> list = new List<string>();
             list.Add("J");

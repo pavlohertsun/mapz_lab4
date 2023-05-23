@@ -16,7 +16,24 @@ namespace mapz_lab4.Hero
         public Backpack backpack { get; set; }
         public State state { get; set; }
 
-        public abstract void sleep();
+        public virtual void sleep()
+        {
+            Console.WriteLine("Sleeping...");
+            Thread.Sleep(30000);
+            stamina = 100;
+        }
+        public void eat()
+        {
+            Console.WriteLine("Eating...");
+            Thread.Sleep(5000);
+            stamina += 30;
+        }
+        public virtual void digWorms()
+        {
+            Thread.Sleep(20000);
+            Console.WriteLine("Digging worms");
+            backpack.equipment.wormsAmount += 3;
+        }
 
         public abstract void changeIndividualCharacteristics();
     }

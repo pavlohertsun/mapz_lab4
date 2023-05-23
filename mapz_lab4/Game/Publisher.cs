@@ -21,7 +21,7 @@ namespace mapz_lab4.Objects
                 new FishA()
             };
         }
-        public Fish randomFishToSpawn()
+        public Fish notify()
         {
 
             int[] array = new int[Fishes.Count];

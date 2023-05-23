@@ -31,7 +31,7 @@ namespace mapz_lab4.Objects
         public override void game(int size, Gender hero, Stick stick, bool useBait)
         {
             GlobalVariables.finish = false;
-            map = new Map(LakeBuilder.lake1());
+            map = new Map(LakeBuilder.lakeCreate());
             Task.Run(() => ReadToConsoleAsync(hero, stick));
             Task.Run(() => SpawnFish(useBait));
             while (true)
@@ -579,7 +579,7 @@ namespace mapz_lab4.Objects
                 }
                 else time = random.Next(4, 7);
                 Thread.Sleep(time * 1000);
-                Fish fish = publisher.randomFishToSpawn();
+                Fish fish = publisher.notify();
                 randomFishIndexFunc(map.lake, random, fish);
                 Task.Run(() => DeleteFish(fish, random, map.lake));
                 if (GlobalVariables.finish)

@@ -24,11 +24,11 @@ namespace mapz_lab4.Hero
             backpack = new Backpack();
             backpack.equipment.stick.chanceToCatch += 30;
         }
-        public override void sleep()
+        public override void digWorms()
         {
-            Console.WriteLine("Sleeping...");
-            Thread.Sleep(3000);
-            stamina = 100;
+            Thread.Sleep(20000);
+            Console.WriteLine("Digging worms");
+            backpack.equipment.wormsAmount += 5;
         }
     }
 }

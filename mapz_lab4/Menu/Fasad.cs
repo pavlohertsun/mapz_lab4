@@ -14,22 +14,22 @@ namespace mapz_lab4
     {
         public void printTable()
         {
+            Console.WriteLine("Choose gender :\n[1] - for man\t [2] - for woman");
+            int gender = int.Parse(Console.ReadLine());
+            Gender hero;
+            if (gender == 1)
+            {
+                hero = new Man();
+            }
+            else
+            {
+                hero = new Woman();
+            }
+            hero.changeIndividualCharacteristics();
+            Level1Stick stick = new Level1Stick(hero.backpack.equipment.stick);
+            Level2Stick upgradedStick = new Level2Stick(hero.backpack.equipment.stick);
             while (true)
             {
-                Console.WriteLine("Choose gender :\n[1] - for man\t [2] - for woman");
-                int gender = int.Parse(Console.ReadLine());
-                Gender hero;
-                if (gender == 1)
-                {
-                    hero = new Man();
-                }
-                else
-                {
-                    hero = new Woman();
-                }
-                hero.changeIndividualCharacteristics();
-                Level1Stick stick = new Level1Stick(hero.backpack.equipment.stick);
-                Level2Stick upgradedStick = new Level2Stick(hero.backpack.equipment.stick);
                 Console.Clear();
                 Console.WriteLine("Your starter character's charackteristicks : ");
                 Console.WriteLine(hero.ToString());
