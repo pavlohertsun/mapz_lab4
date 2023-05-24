@@ -18,12 +18,12 @@ namespace mapz_lab4.Objects
             proxy = game;
         }
 
-        public override void game(int size, Gender hero, Stick stick, bool useBait)
+        public override void game(int size, Gender hero, Stick stick, bool useBait, Location location)
         {
             int value = stick.chanceToCatch;
             hero.expirience++;
             stick.chanceToCatch = 100;
-            proxy.game(size, hero, stick, useBait);
+            proxy.game(size, hero, stick, useBait, location);
             hero.expirience--;
             stick.chanceToCatch = value;
         }

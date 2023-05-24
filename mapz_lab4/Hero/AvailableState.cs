@@ -10,7 +10,9 @@ namespace mapz_lab4.Hero
     {
         public override bool showState()
         {
+            Console.Clear();
             Console.WriteLine("You are enable to start fishing!");
+            Thread.Sleep(5000);
             return true;
         }
     }

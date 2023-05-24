@@ -22,18 +22,18 @@ namespace mapz_lab4.Objects
     {
         private static DefaultGame INSTANCE;
         public Map map;
-        public DefaultGame() { }
+        private DefaultGame() { }
         public static DefaultGame getInstance()
         {
             if (INSTANCE == null) INSTANCE = new DefaultGame();
             return INSTANCE;
         }
-        public override void game(int size, Gender hero, Stick stick, bool useBait)
+        public override void game(int size, Gender hero, Stick stick, bool useBait, Location location)
         {
             GlobalVariables.finish = false;
             map = new Map(LakeBuilder.lakeCreate());
             Task.Run(() => ReadToConsoleAsync(hero, stick));
-            Task.Run(() => SpawnFish(useBait));
+            Task.Run(() => SpawnFish(useBait, location));
             while (true)
             {
                 Console.Clear();
@@ -566,7 +566,7 @@ namespace mapz_lab4.Objects
                 lake.matrix[fish.index1, fish.index2] = number;
             }
         }
-        async Task SpawnFish(bool useBait)
+        async Task SpawnFish(bool useBait, Location location)
         {
             Random random = new Random();
             Publisher publisher = new Publisher();
@@ -579,7 +579,7 @@ namespace mapz_lab4.Objects
                 }
                 else time = random.Next(4, 7);
                 Thread.Sleep(time * 1000);
-                Fish fish = publisher.notify();
+                Fish fish = publisher.notify(location);
                 randomFishIndexFunc(map.lake, random, fish);
                 Task.Run(() => DeleteFish(fish, random, map.lake));
                 if (GlobalVariables.finish)

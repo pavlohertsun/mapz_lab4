@@ -21,11 +21,11 @@ namespace mapz_lab4.Objects
                 new FishA()
             };
         }
-        public Fish notify()
+        public Fish notify(Location location)
         {
 
             int[] array = new int[Fishes.Count];
-            array = generateArray();
+            array = generateArray(location.availableFishes.Count);
             int maxNumber = array.Max();
             int maxIndex = array.Select((number, index) => new { Number = number, Index = index }).OrderByDescending(x => x.Number).First().Index;
             AbstractFactory factory;
@@ -36,10 +36,10 @@ namespace mapz_lab4.Objects
             Fish fish = factory.createFish();
             return fish;
         }
-        public int[] generateArray()
+        public int[] generateArray(int index)
         {
             int[] array = new int[Fishes.Count];
-            for(int i = 0; i<Fishes.Count; ++i)
+            for(int i = 0; i < index; ++i)
             {
                 array[i] = Fishes[i].randomIndex();
             }

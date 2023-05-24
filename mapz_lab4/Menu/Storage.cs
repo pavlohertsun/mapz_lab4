@@ -92,6 +92,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -107,6 +108,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -122,37 +124,46 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
                 if (choice2 == 4)
                 {
-                    bool answer = checkIfEnoughMoney(100, hero);
+                    bool answer = checkIfEnoughMoney(50, hero);
                     if (answer)
                     {
-                        hero.moneyAmount -= 100;
+                        hero.moneyAmount -= 50;
                         hero.expirience++;
+                        Console.Clear();
+                        Console.WriteLine("New location is available now");
+                        Thread.Sleep(5000);
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
                 if (choice2 == 5)
                 {
-                    bool answer = checkIfEnoughMoney(100, hero);
+                    bool answer = checkIfEnoughMoney(50, hero);
                     if (answer)
                     {
-                        hero.moneyAmount -= 100;
+                        hero.moneyAmount -= 50;
                         stick1.isAvailable = false;
                         stick2.isAvailable = true;
+                        Console.Clear();
+                        Console.WriteLine("Your stick is upgraded");
+                        Thread.Sleep(5000);
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough money to buy. Returning to main page of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -189,6 +200,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough bait to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -204,6 +216,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough worms to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -219,6 +232,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -234,6 +248,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -249,6 +264,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }
@@ -264,6 +280,7 @@ namespace mapz_lab4.Objects
                     {
                         Console.Clear();
                         Console.WriteLine("Not enough fish to sell. Returning to the main menu of the storage.\n\n");
+                        Thread.Sleep(5000);
                         break;
                     }
                 }

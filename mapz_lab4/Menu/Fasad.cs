@@ -33,7 +33,7 @@ namespace mapz_lab4
                 Console.Clear();
                 Console.WriteLine("Your starter character's charackteristicks : ");
                 Console.WriteLine(hero.ToString());
-                Console.WriteLine("Now you can :\n[F] - start fishing\t [S] - open storage\t [R] - sleep\t [Q] - quit the qame");
+                Console.WriteLine("Now you can :\n[F] - start fishing\t [S] - open storage\n[R] - sleep\t\t [D] - dig worms\n[E] - eat some food\t [Q] - quit the qame");
                 string chr = Console.ReadLine();
                 if (chr == "F" || chr == "f")
                 {
@@ -57,12 +57,12 @@ namespace mapz_lab4
                                 if (choice2 == "Y" || choice2 == "y")
                                 {
                                     ProxyGame game1 = new ProxyGame(game);
-                                    game1.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, true);
+                                    game1.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, true, LocationCreator.LocationsList[choice - 1]);
                                     hero.backpack.equipment.baitAmount--;
                                 }
                                 if (choice2 == "N" || choice2 == "n")
                                 {
-                                    game.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, false);
+                                    game.game(LocationCreator.LocationsList[choice - 1].size, hero, stick, false, LocationCreator.LocationsList[choice - 1]);
                                 }
                             }
                             if (upgradedStick.isAvailable)
@@ -71,12 +71,12 @@ namespace mapz_lab4
                                 if (choice2 == "Y" || choice2 == "y")
                                 {
                                     ProxyGame game1 = new ProxyGame(game);
-                                    game1.game(LocationCreator.LocationsList[choice - 1].size, hero, upgradedStick, true);
+                                    game1.game(LocationCreator.LocationsList[choice - 1].size, hero, upgradedStick, true, LocationCreator.LocationsList[choice - 1]);
                                     hero.backpack.equipment.baitAmount--;
                                 }
                                 if (choice2 == "N" || choice2 == "n")
                                 {
-                                    game.game(LocationCreator.LocationsList[choice - 1].size, hero, upgradedStick, false);
+                                    game.game(LocationCreator.LocationsList[choice - 1].size, hero, upgradedStick, false, LocationCreator.LocationsList[choice - 1]);
                                 }
                             }
                         }
@@ -98,8 +98,25 @@ namespace mapz_lab4
                 }
                 if (chr == "R" || chr == "r")
                 {
+                    Console.Clear();
                     hero.sleep();
+                    Console.WriteLine("You've fully recharged your stamina");
+                    Thread.Sleep(5000);
                 }
+                if (chr == "D" || chr == "d")
+                {
+                    Console.Clear();
+                    hero.digWorms();
+                    Console.WriteLine("You've digged worms");
+                    Thread.Sleep(5000);
+                }
+                if(chr == "E" || chr == "e")
+                {
+                    Console.Clear();
+                    hero.eat();
+                    Console.WriteLine("You've charged your stamina");
+                    Thread.Sleep(5000);
+                }    
                 if (chr == "Q" || chr == "q")
                 {
                     Environment.Exit(0);

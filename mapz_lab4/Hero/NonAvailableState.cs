@@ -10,7 +10,9 @@ namespace mapz_lab4.Hero
     {
         public override bool showState()
         {
+            Console.Clear();
             Console.WriteLine("Your are too tired, you should have a sleep.");
+            Thread.Sleep(5000);
             return false;
         }
     }
